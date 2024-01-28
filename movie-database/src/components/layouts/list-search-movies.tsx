@@ -1,25 +1,39 @@
 "use client";
-import SearchMovies from "../utils/search-movies";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
+import { useRouter } from "next/navigation";
 import { useState } from "react";
 
 const ListSearchMovies = () => {
   const [movie, setMovie] = useState("");
-  console.log(movie);
-  
+  const router = useRouter();
+
+  // Previne que o submit button não faça o evento padrão
+  const handleSubmit = (event: any) => {
+    event.preventDefault();
+    router.push("/search-page?movie=" + movie);
+  };
+
   return (
-    <section className="flex justify-center flex-col my-10">
-      <div className="flex w-full max-w-sm items-center space-x-2">
+    <section className="my-10 absolute top-0 ">
+      <form
+        className="flex w-full max-w-sm items-center space-x-2"
+        onSubmit={handleSubmit}
+      >
         <Input
           type="text"
           placeholder="Filme"
-          onChange={(event) => setMovie(event.target.value)}
+          name="movie-onchange"
           value={movie}
+          onChange={(event) => setMovie(event.target.value)}
         />
-        <Button type="submit">Busque o filme</Button>
-      </div>
-      <SearchMovies nameMovie={movie} />
+        <Button
+          type="submit"
+          onClick={() => router.push("/search-page?movie=" + movie)}
+        >
+          Buscar
+        </Button>
+      </form>
     </section>
   );
 };

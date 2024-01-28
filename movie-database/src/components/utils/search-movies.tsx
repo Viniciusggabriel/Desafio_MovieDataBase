@@ -56,7 +56,7 @@ const SearchMovies: React.FC<childrenSearchMovies> = ({ nameMovie }) => {
   return (
     <article className="grid grid-cols-2 gap-x-8 gap-y-3 md:grid-cols-4">
       {movies.map((movie, index) => (
-        <Card className={cn("w-[150px]", "md:w-[260px]")}>
+        <Card className={cn("w-[150px]", "md:w-[260px]")} key={index}>
           <CardHeader>
             <Dialog>
               <DialogTrigger asChild>
@@ -65,7 +65,7 @@ const SearchMovies: React.FC<childrenSearchMovies> = ({ nameMovie }) => {
               <DialogContent className="sm:max-w-[475px]">
                 <DialogHeader>
                   <DialogTitle className="pt-4">{movie.title}</DialogTitle>
-                  <DialogDescription>{movie.original_title}</DialogDescription>
+                  <DialogDescription>{movie.release_date}</DialogDescription>
                 </DialogHeader>
                 <div className="grid gap-4 py-4">
                   <Image
