@@ -1,19 +1,22 @@
 import * as React from "react";
 import { useState, useEffect } from "react";
 import { fetchSearchApi } from "@/api/api";
-import { Card, CardContent } from "@/components/ui/card";
-import {
-  Carousel,
-  CarouselContent,
-  CarouselItem,
-  CarouselNext,
-  CarouselPrevious,
-} from "@/components/ui/carousel";
 import Image from "next/image";
+import { cn } from "@/lib/utils";
+import { Card, CardContent, CardHeader } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogFooter,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "@/components/ui/dialog";
 
 interface SearchDataProps {
   backdrop_path: string;
-  genres: { id: number; name: string }[];
   id: number;
   original_title: string;
   overview: string;
@@ -27,6 +30,7 @@ interface SearchDataProps {
   title: string;
   video: boolean;
   vote_average: number;
+  release_date: string;
 }
 
 interface childrenSearchMovies {
@@ -50,31 +54,48 @@ const SearchMovies: React.FC<childrenSearchMovies> = ({ nameMovie }) => {
   }, [nameMovie]);
 
   return (
-    <Carousel className="w-full max-w-xl">
-      <CarouselContent className="-ml-1">
-        {movies.map((movie, index) => (
-          <CarouselItem key={index}>
-            <div className="p-1">
-              <Card>
-                <CardContent className="flex aspect-square flex-col items-center justify-center p-6">
-                  <span className="text-2xl font-semibold">{movie.title}</span>
+    <article className="grid grid-cols-2 gap-x-8 gap-y-3 md:grid-cols-4">
+      {movies.map((movie, index) => (
+        <Card className={cn("w-[150px]", "md:w-[260px]")}>
+          <CardHeader>
+            <Dialog>
+              <DialogTrigger asChild>
+                <Button variant="secondary">Ver mais</Button>
+              </DialogTrigger>
+              <DialogContent className="sm:max-w-[475px]">
+                <DialogHeader>
+                  <DialogTitle className="pt-4">{movie.title}</DialogTitle>
+                  <DialogDescription>{movie.original_title}</DialogDescription>
+                </DialogHeader>
+                <div className="grid gap-4 py-4">
                   <Image
                     src={
                       "https://image.tmdb.org/t/p/w500" + movie.backdrop_path
                     }
                     alt={movie.title}
                     width={500}
-                    height={500}
+                    height={150}
+                    className="rounded-xl"
                   />
-                </CardContent>
-              </Card>
-            </div>
-          </CarouselItem>
-        ))}
-      </CarouselContent>
-      <CarouselPrevious />
-      <CarouselNext />
-    </Carousel>
+                </div>
+                <DialogFooter>
+                  <p>{movie.overview}</p>
+                </DialogFooter>
+              </DialogContent>
+            </Dialog>
+          </CardHeader>
+          <CardContent className="flex aspect-square flex-col items-center justify-center p-2">
+            <Image
+              src={"https://image.tmdb.org/t/p/w500" + movie.poster_path}
+              alt={movie.title}
+              width={500}
+              height={500}
+              className="rounded-xl"
+            />
+          </CardContent>
+        </Card>
+      ))}
+    </article>
   );
 };
 
