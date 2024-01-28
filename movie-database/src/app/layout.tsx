@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { Roboto_Slab } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/components/utils/theme-provider";
-import { ModeToggle } from "@/components/ui/mode-toggle";
+import NavMenu from "@/components/layouts/nav-menu";
 
 const RobotoSlab = Roboto_Slab({ subsets: ["latin"] });
 
@@ -25,7 +25,7 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          <ModeToggle />
+          <NavMenu />
           {children}
         </ThemeProvider>
       </body>

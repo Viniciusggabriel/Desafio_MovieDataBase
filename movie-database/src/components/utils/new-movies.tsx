@@ -9,6 +9,11 @@ import {
 } from "@/components/ui/carousel";
 import Image from "next/image";
 
+interface styleProps {
+  divImage: string;
+  image: string;
+}
+
 interface SearchDataProps {
   backdrop_path: string;
   id: number;
@@ -27,7 +32,7 @@ interface SearchDataProps {
   release_date: string;
 }
 
-const NewMovies = () => {
+const NewMovies = (props: styleProps) => {
   const [movies, setMovies] = useState<SearchDataProps[]>([]);
 
   useEffect(() => {
@@ -58,13 +63,14 @@ const NewMovies = () => {
         <CarouselContent>
           {movies.map((movie, index) => (
             <CarouselItem key={index}>
-              <div className="w-full h-screen">
+              <div className={props.divImage}>
                 <Image
                   src={"https://image.tmdb.org/t/p/w500" + movie.backdrop_path}
                   alt={movie.title}
+                  priority
                   width={500}
                   height={500}
-                  className="rounded-xl w-full h-full object-cover blur-sm"
+                  className={props.image}
                 />
               </div>
             </CarouselItem>

@@ -14,6 +14,7 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog";
+import { ChevronUpIcon } from "@radix-ui/react-icons";
 
 interface SearchDataProps {
   backdrop_path: string;
@@ -60,7 +61,10 @@ const SearchMovies: React.FC<childrenSearchMovies> = ({ nameMovie }) => {
           <CardHeader>
             <Dialog>
               <DialogTrigger asChild>
-                <Button variant="secondary">Ver mais</Button>
+                <Button variant="secondary">
+                  <ChevronUpIcon className="h-4 w-4" />
+                  <span className="mx-2">Ver mais</span>
+                </Button>
               </DialogTrigger>
               <DialogContent className="sm:max-w-[475px]">
                 <DialogHeader>
@@ -79,7 +83,18 @@ const SearchMovies: React.FC<childrenSearchMovies> = ({ nameMovie }) => {
                   />
                 </div>
                 <DialogFooter>
-                  <p>{movie.overview}</p>
+                  {/* Dialog de overview */}
+                  <Dialog>
+                    <DialogTrigger asChild>
+                      <Button variant="secondary">
+                        <ChevronUpIcon className="h-4 w-4" />
+                        <span className="mx-2">overview</span>
+                      </Button>
+                    </DialogTrigger>
+                    <DialogContent>
+                      <p className="text-sm">{movie.overview}</p>
+                    </DialogContent>
+                  </Dialog>
                 </DialogFooter>
               </DialogContent>
             </Dialog>

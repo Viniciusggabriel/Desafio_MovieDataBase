@@ -4,7 +4,7 @@ import { Input } from "@/components/ui/input";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 
-const ListSearchMovies = () => {
+const InputSearchUrl = () => {
   const [movie, setMovie] = useState("");
   const router = useRouter();
 
@@ -15,9 +15,9 @@ const ListSearchMovies = () => {
   };
 
   return (
-    <section className="my-10 absolute top-0 ">
+    <section className="my-10 w-2/4 absolute top-1/4 left-2/4 transform -translate-y-2/4 -translate-x-2/4">
       <form
-        className="flex w-full max-w-sm items-center space-x-2"
+        className="flex w-full max-w-xl items-center space-x-2"
         onSubmit={handleSubmit}
       >
         <Input
@@ -25,9 +25,11 @@ const ListSearchMovies = () => {
           placeholder="Filme"
           name="movie-onchange"
           value={movie}
+          className="bg-slate-800 placeholder:text-white"
           onChange={(event) => setMovie(event.target.value)}
         />
         <Button
+          variant={"secondary"}
           type="submit"
           onClick={() => router.push("/search-page?movie=" + movie)}
         >
@@ -38,4 +40,4 @@ const ListSearchMovies = () => {
   );
 };
 
-export default ListSearchMovies;
+export default InputSearchUrl;
