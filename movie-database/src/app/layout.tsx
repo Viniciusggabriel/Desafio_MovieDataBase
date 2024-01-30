@@ -1,8 +1,7 @@
 import type { Metadata } from "next";
 import { Roboto_Slab } from "next/font/google";
 import "./globals.css";
-import { ThemeProvider } from "@/components/utils/theme-provider";
-import NavMenu from "@/components/layouts/nav-menu";
+import { ThemeProvider } from "@/components/ui/ThemeProvider";
 
 const RobotoSlab = Roboto_Slab({ subsets: ["latin"] });
 
@@ -18,14 +17,13 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="pt-br">
-      <body className={RobotoSlab.className}>
+      <body className={`transition-all ${RobotoSlab.className}`}>
         <ThemeProvider
           attribute="class"
           defaultTheme="system"
           enableSystem
           disableTransitionOnChange
         >
-          <NavMenu />
           {children}
         </ThemeProvider>
       </body>

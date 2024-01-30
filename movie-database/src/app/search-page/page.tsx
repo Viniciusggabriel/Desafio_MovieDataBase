@@ -1,5 +1,6 @@
 "use client";
-import SearchMovies from "@/components/utils/search-movies";
+import NavMenu from "@/components/layouts/header/NavMenu";
+import SearchMovies from "@/components/utils/SearchMovies";
 import { useSearchParams } from "next/navigation";
 
 export default function SearchPage() {
@@ -7,8 +8,11 @@ export default function SearchPage() {
   const searchUrl = searchParams.get("movie");
 
   return (
-    <main className="flex justify-center py-10">
-      <SearchMovies nameMovie={searchUrl || ""} />
-    </main>
+    <>
+      <NavMenu itens={["/#home"]} />
+      <main className="flex justify-center py-10">
+        <SearchMovies nameMovie={searchUrl || ""} />
+      </main>
+    </>
   );
 }

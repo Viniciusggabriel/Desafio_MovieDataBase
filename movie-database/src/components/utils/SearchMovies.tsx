@@ -1,10 +1,7 @@
 import * as React from "react";
-import { useState, useEffect } from "react";
 import { fetchSearchApi } from "@/api/api";
-import Image from "next/image";
+import { useState, useEffect } from "react";
 import { cn } from "@/lib/utils";
-import { Card, CardContent, CardHeader } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
 import {
   Dialog,
   DialogContent,
@@ -13,7 +10,10 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from "@/components/ui/dialog";
+} from "@/components/ui/Dialog";
+import Image from "next/image";
+import { Card, CardContent, CardHeader } from "@/components/ui/Card";
+import { Button } from "@/components/ui/Button";
 import { ChevronUpIcon } from "@radix-ui/react-icons";
 
 interface SearchDataProps {
@@ -34,17 +34,17 @@ interface SearchDataProps {
   release_date: string;
 }
 
-interface childrenSearchMovies {
+interface definitionProps {
   nameMovie: string;
 }
 
-const SearchMovies: React.FC<childrenSearchMovies> = ({ nameMovie }) => {
+const SearchMovies = (props: definitionProps) => {
   const [movies, setMovies] = useState<SearchDataProps[]>([]);
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetchSearchApi(nameMovie);
+        const response = await fetchSearchApi(props.nameMovie);
         const data = response.results || [];
         setMovies(data);
       } catch (error) {
@@ -52,12 +52,12 @@ const SearchMovies: React.FC<childrenSearchMovies> = ({ nameMovie }) => {
       }
     };
     fetchData();
-  }, [nameMovie]);
+  }, [props.nameMovie]);
 
   return (
-    <article className="grid grid-cols-2 gap-x-8 gap-y-3 md:grid-cols-4">
+    <section className="grid grid-cols-2 gap-x-8 gap-y-3 pt-10 md:grid-cols-6">
       {movies.map((movie, index) => (
-        <Card className={cn("w-[150px]", "md:w-[260px]")} key={index}>
+        <Card className={cn("w-[150px]", "md:w-[170px]")} key={index}>
           <CardHeader>
             <Dialog>
               <DialogTrigger asChild>
@@ -92,7 +92,7 @@ const SearchMovies: React.FC<childrenSearchMovies> = ({ nameMovie }) => {
                       </Button>
                     </DialogTrigger>
                     <DialogContent>
-                      <p className="text-sm">{movie.overview}</p>
+                      <p className="text-sm text-center">{movie.overview}</p>
                     </DialogContent>
                   </Dialog>
                 </DialogFooter>
@@ -110,7 +110,7 @@ const SearchMovies: React.FC<childrenSearchMovies> = ({ nameMovie }) => {
           </CardContent>
         </Card>
       ))}
-    </article>
+    </section>
   );
 };
 
