@@ -16,9 +16,6 @@ export async function fetchSearchApi(nameMovie: string) {
     return json;
   } catch (error) {
     console.error("Ocorreu um erro na requisição da API", error);
-<<<<<<< Updated upstream
-    throw error; // Para usar a interface, mantenha o throw se necessário
-=======
     throw error;
   }
 }
@@ -37,6 +34,5 @@ export async function fetchApi(URL: string) {
   } catch (error) {
     console.error("Ocorreu um erro na requisição da API", error);
     throw error;
->>>>>>> Stashed changes
   }
 }

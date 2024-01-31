@@ -1,20 +1,11 @@
-<<<<<<< Updated upstream
-import ListSearchMovies from "@/components/layouts/list-search-movies";
-=======
 import HomeNewList from "@/components/layouts/section/HomeNewList";
 import NavMenu from "@/components/layouts/header/NavMenu";
-import PopularMovies from "@/components/utils/PopularMovies";
 import PopularList from "@/components/layouts/section/PopularList";
 import TopRatedList from "@/components/layouts/section/TopRatedList";
->>>>>>> Stashed changes
 
-export default function Home() {
+export default async function Home() {
+  await new Promise((resolve) => setTimeout(resolve, 1000));
   return (
-<<<<<<< Updated upstream
-    <main>
-      <ListSearchMovies />
-    </main>
-=======
     <>
       <NavMenu itens={["#home", "#popular", "#top_rated"]} />
       <main>
@@ -29,6 +20,5 @@ export default function Home() {
         </section>
       </main>
     </>
->>>>>>> Stashed changes
   );
 }

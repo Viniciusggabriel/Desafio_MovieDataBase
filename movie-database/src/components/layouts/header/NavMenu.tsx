@@ -35,7 +35,7 @@ const NavMenu = (props: NavMenuRoutesProps) => {
   return (
     <header className="flex justify-center group">
       <NavigationMenu className="p-2 fixed z-50">
-        <NavigationMenuList className="grid grid-rows-2 gap-2 md:flex p-2 border-2 rounded-md backdrop-blur-sm transition-all duration-500 transform origin-center scale-x-0">
+        <NavigationMenuList className="grid grid-rows-2 gap-2 md:flex p-2 border-2 rounded-md backdrop-blur-sm transition-all duration-500 transform origin-center scale-x-0 hover:bg-stone-200 dark:hover:bg-stone-900">
           <NavigationMenuItem className="row-start-1">
             <ModeToggle />
           </NavigationMenuItem>
