@@ -55,7 +55,7 @@ const SearchMovies = (props: definitionProps) => {
   }, [props.nameMovie]);
 
   return (
-    <section className="grid grid-cols-2 gap-x-8 gap-y-3 pt-10 md:grid-cols-6">
+    <section className="grid grid-cols-2 gap-x-8 gap-y-3 pt-20 md:grid-cols-6">
       {movies.map((movie, index) => (
         <Card className={cn("w-[150px]", "md:w-[170px]")} key={index}>
           <CardHeader>
@@ -92,7 +92,7 @@ const SearchMovies = (props: definitionProps) => {
                       </Button>
                     </DialogTrigger>
                     <DialogContent>
-                      <p className="text-sm text-center">{movie.overview}</p>
+                      <p className="text-sm text-start indent-8 p-3">{movie.overview}</p>
                     </DialogContent>
                   </Dialog>
                 </DialogFooter>

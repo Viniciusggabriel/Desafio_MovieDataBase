@@ -23,7 +23,7 @@ import { Card, CardContent, CardFooter, CardHeader } from "../ui/Card";
 import { Button } from "../ui/Button";
 import { ChevronUpIcon } from "@radix-ui/react-icons";
 
-interface PopularDataProps {
+interface TopRatedDataProps {
   backdrop_path: string;
   id: number;
   original_title: string;
@@ -46,13 +46,15 @@ interface definitionProps {
   image: string;
 }
 
-const PopularMovies = (props: definitionProps) => {
-  const [movies, setMovies] = useState<PopularDataProps[]>([]);
+const TopRatedMovies = (props: definitionProps) => {
+  const [movies, setMovies] = useState<TopRatedDataProps[]>([]);
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetchApi("https://api.themoviedb.org/3/movie/popular");
+        const response = await fetchApi(
+          "https://api.themoviedb.org/3/movie/top_rated"
+        );
         const data = response.results;
         setMovies(data);
       } catch (error) {
@@ -103,6 +105,9 @@ const PopularMovies = (props: definitionProps) => {
                       <DialogDescription>
                         {movie.release_date}
                       </DialogDescription>
+                      <DialogDescription>
+                        {movie.vote_average.toFixed(2)}
+                      </DialogDescription>
                     </DialogHeader>
                     <div className="grid gap-4 py-4">
                       <Image
@@ -126,7 +131,9 @@ const PopularMovies = (props: definitionProps) => {
                           </Button>
                         </DialogTrigger>
                         <DialogContent>
-                          <p className="text-sm text-start indent-8 p-3">{movie.overview}</p>
+                          <p className="text-sm text-start indent-8 p-3">
+                            {movie.overview}
+                          </p>
                         </DialogContent>
                       </Dialog>
                     </DialogFooter>
@@ -146,4 +153,4 @@ const PopularMovies = (props: definitionProps) => {
   );
 };
 
-export default PopularMovies;
+export default TopRatedMovies;

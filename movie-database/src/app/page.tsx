@@ -1,6 +1,5 @@
 import HomeNewList from "@/components/layouts/section/HomeNewList";
 import NavMenu from "@/components/layouts/header/NavMenu";
-import PopularMovies from "@/components/utils/PopularMovies";
 import PopularList from "@/components/layouts/section/PopularList";
 
 export default async function Home() {

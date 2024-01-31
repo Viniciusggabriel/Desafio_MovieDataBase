@@ -1,5 +1,5 @@
 import * as React from "react";
-import { fetchNewApi } from "@/api/api";
+import { fetchApi } from "@/api/api";
 import { useEffect, useState } from "react";
 import Autoplay from "embla-carousel-autoplay";
 import {
@@ -38,8 +38,10 @@ const NewMovies = (props: definitionProps) => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetchNewApi();
-        const data = response.results; 
+        const response = await fetchApi(
+          "https://api.themoviedb.org/3/movie/upcoming"
+        );
+        const data = response.results;
         setMovies(data);
       } catch (error) {
         console.log("Ouve um erro ao achar seu filme", error);
@@ -68,10 +70,16 @@ const NewMovies = (props: definitionProps) => {
                 priority
                 src={`https://image.tmdb.org/t/p/original${movie.backdrop_path}`}
                 width={1000}
-                height={562} // Ajuste a altura proporcionalmente
+                height={562}
                 className={props.image}
-              /> 
+              />
             </div>
+            <span className="absolute z-10 lef w-10/12 text-end -my-24 font-black">
+              {movie.title}
+            </span>
+            <span className="absolute z-10 lef w-10/12 text-end -my-20 font-black ">
+              {movie.release_date}
+            </span>
           </CarouselItem>
         ))}
       </CarouselContent>
