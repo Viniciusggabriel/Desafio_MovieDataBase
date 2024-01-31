@@ -28,21 +28,19 @@ const NavMenu = (props: NavMenuRoutesProps) => {
   };
 
   useEffect(() => {
-    const inputAnimation = document.querySelector(
-      ".scale-x-0"
-    ) as HTMLDivElement;
-    inputAnimation.classList.add("scale-x-100");
+    const item = document.querySelector(".scale-x-0") as HTMLDivElement;
+    item.classList.add("scale-x-100");
   }, []);
 
   return (
-    <header className="flex justify-center">
+    <header className="flex justify-center group">
       <NavigationMenu className="p-2 fixed z-50">
-        <NavigationMenuList className="grid grid-rows-2 md:flex p-2 border-2 rounded-md  backdrop-blur-sm hover:bg-slate-300 dark:hover:bg-slate-900 transition-all duration-500 transform origin-center scale-x-0">
+        <NavigationMenuList className="grid grid-rows-2 gap-2 md:flex p-2 border-2 rounded-md backdrop-blur-sm transition-all duration-500 transform origin-center scale-x-0">
           <NavigationMenuItem className="row-start-1">
             <ModeToggle />
           </NavigationMenuItem>
 
-          <NavigationMenuItem className="row-start-1 flex">
+          <NavigationMenuItem className="row-start-1 flex justify-end">
             {props.itens.map((routes, index) => {
               const modifiedRoute = dynamicTextMapping[routes] || routes;
 

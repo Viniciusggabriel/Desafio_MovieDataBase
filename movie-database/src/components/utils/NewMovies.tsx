@@ -6,7 +6,7 @@ import {
   Carousel,
   CarouselContent,
   CarouselItem,
-} from "@/components/ui/Carousel";
+} from "@/components/ui/carousel";
 import Image from "next/image";
 
 interface NewDataProps {
