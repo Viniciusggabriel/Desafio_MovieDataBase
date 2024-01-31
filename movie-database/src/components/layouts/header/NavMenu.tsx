@@ -3,12 +3,12 @@ import {
   NavigationMenu,
   NavigationMenuItem,
   NavigationMenuList,
-} from "@/components/ui/NavigationMenu";
+} from "@/components/ui/navigationmenu";
 import { NavigationMenuLink } from "@radix-ui/react-navigation-menu";
 import Link from "next/link";
 import { ModeToggle } from "./navigation/ModeToggle";
 import InputSearchUrl from "./navigation/InputSearchUrl";
-import { Button } from "../../ui/Button";
+import { Button } from "../../ui/button";
 import { useEffect } from "react";
 
 interface NavMenuRoutesProps {

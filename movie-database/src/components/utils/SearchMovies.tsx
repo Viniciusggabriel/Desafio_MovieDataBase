@@ -10,10 +10,10 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from "@/components/ui/Dialog";
+} from "@/components/ui/dialog";
 import Image from "next/image";
-import { Card, CardContent, CardHeader } from "@/components/ui/Card";
-import { Button } from "@/components/ui/Button";
+import { Card, CardContent, CardHeader } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
 import { ChevronUpIcon } from "@radix-ui/react-icons";
 
 interface SearchDataProps {
@@ -92,7 +92,9 @@ const SearchMovies = (props: definitionProps) => {
                       </Button>
                     </DialogTrigger>
                     <DialogContent>
-                      <p className="text-sm text-start indent-8 p-3">{movie.overview}</p>
+                      <p className="text-sm text-start indent-8 p-3">
+                        {movie.overview}
+                      </p>
                     </DialogContent>
                   </Dialog>
                 </DialogFooter>

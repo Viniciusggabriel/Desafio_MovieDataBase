@@ -20,7 +20,7 @@ import {
 } from "@/components/ui/dialog";
 import Image from "next/image";
 import { Card, CardContent, CardFooter, CardHeader } from "../ui/card";
-import { Button } from "../ui/Button";
+import { Button } from "../ui/button";
 import { ChevronUpIcon } from "@radix-ui/react-icons";
 
 interface TopRatedDataProps {

@@ -20,7 +20,7 @@ import {
 } from "@/components/ui/dialog";
 import Image from "next/image";
 import { Card, CardContent, CardFooter, CardHeader } from "../ui/card";
-import { Button } from "../ui/Button";
+import { Button } from "../ui/button";
 import { ChevronUpIcon } from "@radix-ui/react-icons";
 
 interface PopularDataProps {
@@ -52,7 +52,9 @@ const PopularMovies = (props: definitionProps) => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetchApi("https://api.themoviedb.org/3/movie/popular");
+        const response = await fetchApi(
+          "https://api.themoviedb.org/3/movie/popular"
+        );
         const data = response.results;
         setMovies(data);
       } catch (error) {
@@ -126,7 +128,9 @@ const PopularMovies = (props: definitionProps) => {
                           </Button>
                         </DialogTrigger>
                         <DialogContent>
-                          <p className="text-sm text-start indent-8 p-3">{movie.overview}</p>
+                          <p className="text-sm text-start indent-8 p-3">
+                            {movie.overview}
+                          </p>
                         </DialogContent>
                       </Dialog>
                     </DialogFooter>
