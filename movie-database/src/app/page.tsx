@@ -3,8 +3,7 @@ import NavMenu from "@/components/layouts/header/NavMenu";
 import PopularList from "@/components/layouts/section/PopularList";
 import TopRatedList from "@/components/layouts/section/TopRatedList";
 
-export default async function Home() {
-  await new Promise((resolve) => setTimeout(resolve, 1000));
+export default function Home() {
   return (
     <>
       <NavMenu itens={["#home", "#popular", "#top_rated"]} />
