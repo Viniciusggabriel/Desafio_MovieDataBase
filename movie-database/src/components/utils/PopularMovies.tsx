@@ -8,7 +8,7 @@ import {
   CarouselItem,
   CarouselNext,
   CarouselPrevious,
-} from "@/components/ui/Carousel";
+} from "@/components/ui/carousel";
 import {
   Dialog,
   DialogContent,
@@ -17,9 +17,9 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from "@/components/ui/Dialog";
+} from "@/components/ui/dialog";
 import Image from "next/image";
-import { Card, CardContent, CardFooter, CardHeader } from "../ui/Card";
+import { Card, CardContent, CardFooter, CardHeader } from "../ui/card";
 import { Button } from "../ui/Button";
 import { ChevronUpIcon } from "@radix-ui/react-icons";
 
